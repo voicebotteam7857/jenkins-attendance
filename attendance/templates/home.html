@@ -7,9 +7,7 @@
 
         <div class="card blue">
             <h3>Total Employees</h3>
-            {% for employee in all_employees %}
-            <p>{{ employee.employee_id }}</p>
-            {% endfor %}
+            <p>{{ all_employees.count }}</p>
         </div>
 
         <div class="card green">
