@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2>Attendance System</h2>
+
+    <nav>
+        <a href="{% url 'home'%}">Home</a>
+        <a href="{% url 'create_employee' %}">Add Employees</a>
+        <a href="#">Attendance</a>
+        <a href="#">Reports</a>
+        <a href="#">Admin</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="welcome-section">
+        <h1>Employee Attendance Management</h1>
+        <p>Manage employees and monitor their daily attendance.</p>
+    </section>
+
+    {% block content %}
+    {% endblock %}
+
+    </main>
+
+<footer>
+    <p>&copy; 2026 Attendance Management System</p>
+</footer>
+
+</body>
+</html>

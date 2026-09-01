@@ -1,0 +1,93 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+
+    <section class="cards">
+
+        <div class="card blue">
+            <h3>Total Employees</h3>
+            <p>48</p>
+        </div>
+
+        <div class="card green">
+            <h3>Present Today</h3>
+            <p>41</p>
+        </div>
+
+        <div class="card red">
+            <h3>Absent Today</h3>
+            <p>4</p>
+        </div>
+
+        <div class="card orange">
+            <h3>On Leave</h3>
+            <p>3</p>
+        </div>
+
+    </section>
+
+    <section class="attendance-section">
+
+        <div class="section-header">
+            <h2>Recent Attendance</h2>
+            <button>View All</button>
+        </div>
+
+        <div class="table-container">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Code</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Join Date</th>                        
+                        <th>Status</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for employee in all_employees %}
+                        <tr>
+                            <td>{{ employee.employee_code }}</td>
+                            <td>{{ employee.name }}</td> 
+                            <td>{{ employee.email }}</td> 
+                            <td>{{ employee.phone }}</td>  
+                            <td>{{ employee.department }}</td>  
+                            <td>{{ employee.designation }}</td>  
+                            <td>{{ employee.joining_date }}</td>  
+                            {% if employee.is_active  %}
+                                <td><span class="status active">Active</span></td>
+                            {% else %}
+                                <td><span class="status inactive">Inactive</span></td>
+                            {% endif %} 
+                            <td> 
+                                <a href="{% url  'edit_employee' employee.employee_id  %}" class="btn btn-edit">Edit</a>
+                                <a href="{% url  'delete_employee' employee.employee_id  %}" class="btn btn-delete">Delete</a>
+                            </td>
+                            
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8">
+                                No employees found.
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                   
+
+                   
+                </tbody>
+            </table>
+
+        </div>
+
+    </section>
+
+{% endblock %}
